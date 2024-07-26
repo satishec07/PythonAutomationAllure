@@ -21,28 +21,28 @@ def pytest_runtest_makereport(item, call):
     return rep
 
 
-def pytest_addoption(parse):
-    parse.addoption("--browser_name", action="store", default="chrome")
+# def pytest_addoption(parse):
+#     parse.addoption("--browser_name", action="store", default="chrome")
 
 
 @pytest.fixture()
 def setup(request):
     global driver
-    browser_name = request.config.getoption("--browser_name")
-    if browser_name == "chrome":
-        ser_obj = Service("D:\\SeleniumPython\\chromedriver-win64\\chromedriver.exe")
-        driver = webdriver.Chrome(service=ser_obj)
+    # browser_name = request.config.getoption("--browser_name")
+    # if browser_name == "chrome":
+    #     ser_obj = Service("D:\\SeleniumPython\\chromedriver-win64\\chromedriver.exe")
+    #     driver = webdriver.Chrome(service=ser_obj)
 
-    elif browser_name == "firefox":
-        ser_obj = Service("D:\\SeleniumPython\\chromedriver-win64\\chromedriver.exe")
-        driver = webdriver.Firefox(service=ser_obj)
+    # elif browser_name == "firefox":
+    #     ser_obj = Service("D:\\SeleniumPython\\chromedriver-win64\\chromedriver.exe")
+    #     driver = webdriver.Firefox(service=ser_obj)
 
-    elif browser_name == "edge":
-        ser_obj = Service("D:\\SeleniumPython\\chromedriver-win64\\chromedriver.exe")
-        driver = webdriver.Edge(service=ser_obj)
-    else:
-        print("Enter correct Browser Name")
-
+    # elif browser_name == "edge":
+    #     ser_obj = Service("D:\\SeleniumPython\\chromedriver-win64\\chromedriver.exe")
+    #     driver = webdriver.Edge(service=ser_obj)
+    # else:
+    #     print("Enter correct Browser Name")
+    driver = webdriver.Chrome()
     driver.get("https://www.google.com/")
     request.cls.driver = driver
     yield
